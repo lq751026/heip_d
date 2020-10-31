@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>付款页面</title>
+</head>
+<body>
+
+
+<link rel="stylesheet" href="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/styles/kendo.common.min.css" />
+<link rel="stylesheet" href="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/styles/kendo.default.min.css" />
+<script src="https://magicbox.bk.tencent.com/static_api/v3/assets/kendoui-2015.2.624/js/kendo.all.min.js"></script>
+<form method="post" enctype="multipart/form-data" action="/pay_img" >
+    <p th:text="${user.phone}">付款人的xxx微信号或者是支付宝账号</p>
+    <span>付款截图:</span>
+    <h4 class="magic-desc">基础示例</h4>
+    <div class="demo" id="kendo_upload_demo1">
+        <input name="file" class="file_input" type="file" />
+    </div>
+    <button type="submit" class="king-btn-demo king-btn king-success" title="上传">确认上传</button>
+</div>
+</form>
+
+</body>
+</html>

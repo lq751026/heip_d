@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"  />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <meta content="false" id="twcClient" name="twcClient" />
+    <link type="text/css" rel="stylesheet" href="css/v2/style.css">
+    <link rel="apple-touch-icon-precomposed" href="../../images/ehaier-icon.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/ehaier-icon.png"/>
+    <title>登录校园跑腿网</title>
+    <link type="text/css" rel="stylesheet" href="css/v2/member.css">
+
+</head>
+<body id="page">
+<header class="header">
+    <span class="fh left"><a href="javascript:history.back(1)">&nbsp;</a></span>  	个人中心
+    <span class="hd_right right">
+
+</span>
+</header>
+<span id="login_errorMsg" style=" padding:10px;"></span>
+<div class="Login">
+    <div>
+        <div class="Login_bottom">
+            <form id="loginForm" action="/userupdate" method="post" enctype="multipart/form-data">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <input name="id" type="hidden" th:value="${user.id}">
+                        <div>用户：<span th:text="${user.name}"></span></div>
+                    <input type="button" id="text_id1" value="修改用户名">
+                    <input type="hidden" th:value="${user.email}" name="email">
+                    <input type="text" style="opacity: 0;" id="text_id2" name="name" th:value="${user.name}">
+                    <tr>
+                        <td height="60" align="center" valign="middle"><div>电子邮箱:<span th:text="${user.email}"></span></div></td>
+                    </tr>
+                    <tr>
+                        <sapn>修改了头像需要重新登录一下</sapn>
+                        <td height="60" align="center" valign="middle">修改头像<input type="file" name="file"></td>
+                    </tr>
+                    <td height="60" align="center" valign="middle"><input type="submit" href="#"  id="memberLogin" class="dl_login" value="修改"></input> </td>
+                    </tr>
+                    <tr>
+                        <td height="55" align="right" valign="middle"><a href="/my">返回我的</a></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+</footer>
+</body>
+<script>
+    $("#text_id1").click(function (){
+         $("#text_id2").css("opacity","1");
+    })
+</script>
+</html>

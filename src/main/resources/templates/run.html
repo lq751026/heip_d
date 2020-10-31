@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><base th:href="@{/}">       <!--定义获取静态网页都是从默认的地址路径下获取-->
+    <base th:src="@{/}">
+    <meta charset="utf-8"/>
+    <title>校园跑腿</title>
+    <meta name="description" content="校园跑腿"/>
+    <meta name="keywords" content="校园跑腿"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="css/amazeui.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="js/jquery.min.js" ></script>
+    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+    <script type="text/javascript" src="js/application.js" ></script>
+</head>.
+<body>
+<div data-am-widget="slider" class="am-slider am-slider-default" data-am-slider='{}'>
+    <ul class="am-slides">
+        <li th:each="carousel:${carousels}"><img src="images/banner1.jpg" th:src="${carousel.pathimge}"></li>
+    </ul>
+</div>
+<div class="am-tabs qiehuan" data-am-tabs >
+    <ul class="am-tabs-nav am-nav am-nav-tabs">
+        <li class="am-active"><a href="#normal">接单区</a></li>
+    </ul>
+</div>
+
+
+
+<div data-am-widget="intro" class="am-intro am-cf am-intro-default" id="normal">
+    <div class="am-g am-intro-bd" th:each="order,orderart:${pageinfos.list}" >
+        <a th:href="'/orders_xq?number='+${order.order_number}">
+            <div class="am-intro-left am-u-sm-3"><img th:src="${order.user.tou_img}" src="http://localhost:8080/images/boy.png"/></div>
+            <div class="am-intro-right am-u-sm-9">
+                <div class="text">
+                    <span style="float: left;color: black;font-size: 16px"><i th:text="${order.user.name}">王同学</i></span>
+                    <span class="fr black" style="margin-right: 2%"><i th:text="${order.status.status_name}">待接单</i></span>
+                    <span class="fr green" style="margin-right: 5%" th:text="${order.aid.text}">取快递</span>
+                    <span th:text="${order.role.sexString}" class="fr blue" style="margin-right: 5%;">  限帅哥</span>
+                </div>
+                <p th:text="${order.user.thing}">门口取韵达快递</p>
+                <div class="text">
+                    <span class="fr"><i>赚</i><i class="price" th:text="${order.moeny}">2.0</i><i>元</i></span>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/bk/css-pro/bk.css" rel="stylesheet">
+    <link href="https://magicbox.bk.tencent.com/static_api/v3/assets/bk-icon-2.0/iconfont.css" rel="stylesheet">
+
+    <div class="bk-page bk-page-compact" id="lis">
+        <ul>
+            <li class="page-item">
+                <a  th:href="@{/run(page=${pageinfos.pageNum+-1<=1?1:pageinfos.pageNum+-1},size=${pageinfos.pageSize})}"  class="page-button">
+                    <i class="bk-icon icon-angle-left"></i>
+                </a>
+            </li>
+            <li class="page-item" th:each="i:${#numbers.sequence(1,pageinfos.pages)}" th:class="${pageinfos.pageNum==i?'page-item cur-page':'page-item'}">
+                <a href="javascript:void(0);"  th:text="${i}" th:href=" @{/run/(page=${i},size=${pageinfos.pageSize})}" class="page-button"></a>
+            </li>
+            <li class="page-item">
+                <a href="" th:href="@{/run/(page=${pageinfos.pageNum+1>=pageinfos.pages?pageinfos.pages:pageinfos.pageNum+1},size=${pageinfos.pageSize})}"  class="page-button">
+                    <i class="bk-icon icon-angle-right"></i>
+                </a>
+            </li>
+            <li class="page-item">
+                <a id="zong"  th:text="总记录数 +${pageinfos.total}" class="page-button">
+                </a>
+                <p id="zong1" th:text="${pageinfos.total}" type="hidden"></p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="communityPage-publish-btn cmn-theme-bgcolor" id="communityPage-publish-btn"><a id="down_order"
+                                                                                           href="/add_order"
+                                                                                           style="color: white">下单</a>
+</div>
+
+<div class="h50"></div>
+<div th:replace="comonm/tail::body"></div>
+
+</body>
+</html>

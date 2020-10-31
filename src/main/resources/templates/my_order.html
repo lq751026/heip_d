@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>校园跑腿</title>
+    <meta name="description" content="校园跑腿"/>
+    <meta name="keywords" content="校园跑腿"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/amazeui.min.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+
+</head>
+<body>
+<header data-am-widget="header" class="am-header am-header-default header">
+    <div class="am-header-left am-header-nav">
+        <a href="javascript:history.go(-1)" class="">
+            <i class="am-header-icon am-icon-angle-left"></i>
+        </a>
+    </div>
+    <h1 class="am-header-title">返费<a href="#title-link" class="" style="color: #333;">我的抢单</a></h1>
+    <div class="am-header-right am-header-nav">
+        <a href="#right-link" class=""> </a>
+    </div>
+</header>
+
+<ul class="order-style">
+    <li id="bt0" class="current"><a href="/my_order?id=0">全部</a></li>
+    <li id="bt1"><a href="/my_order?id=1">进行中</a></li>
+    <li id="bt2" ><a href="/my_order?id=2">未付款</a></li>
+    <li id="bt3" ><a href="/my_order?id=3">已完成</a></li>
+</ul>
+<ask th:each="order:${orders}" th:if="${order.grab!=null}">
+<div  class="c-comment">
+    <span class="c-comment-num" th:text="'订单编号：'+${order.order_number}">订单编号：150916517682</span>
+    <span class="c-comment-suc" th:text="${order.grab.text}">进行中</span>
+</div>
+<div class="c-comment-list" style="border: 0;">
+    <a class="o-con" href="content.html">
+        <div class="o-con-img"><img src="images/boy.png" th:src="${order.user.tou_img}"></div>
+        <div class="o-con-txt">
+            <p th:text="${order.user.thing}">取快递</p>
+            <p style="color: gray;margin-top: 2px;font-size: 12px" th:text=" '心愿完成时间：'+${#dates.format(order.hope_time,'yyyy/MM/dd hh:mm')}">2018-10-10 18:00:00</p>
+            <span style="color: gray;margin-top: 2px;font-size: 12px" th:text="'来自【天一学院】'+${order.user.address}">来自【西安欧亚学院】</span>
+        </div>
+        <div class="o-con-much"><h4></h4></div>
+
+    </a>
+    <div class="c-com-money">
+        <span class="fr"><i>赚</i><i class="price" th:text="${order.moeny}">2.0</i><i>元</i></span>
+    </div>
+
+</div>
+<div class="c-com-btn">
+    <a href="/pay_fk" th:href="'/pay_fk?number='+${order.order_number}" th:if="${order.grab.id==2}">收款</a>
+    <a th:href="'http://wpa.qq.com/msgrd?v=3&uin='+${order.user.getQq()}+'&site=qq&menu=yes'" th:if="${order.grab.id==1}">联系客户</a>
+    <a th:href="'/my_order_or?number='+${order.order_number}" th:if="${order.grab.id==1}">帮忙完成</a>
+</div>
+
+</ask><!--
+<div class="clear"></div>
+
+<div class="c-comment">
+    <span class="c-comment-num">订单编号：150916517682</span>
+    <span class="c-comment-suc">已转让</span>
+</div>
+<div class="c-comment-list" style="border: 0;">
+    <a class="o-con" href="content.html">
+        <div class="o-con-img"><img src="images/boy.png"></div>
+        <div class="o-con-txt">
+            <p>取快递</p>
+            <p style="color: gray;margin-top: 2px;font-size: 12px">2018-10-10 18:00:00</p>
+            <span style="color: gray;margin-top: 2px;font-size: 12px">来自【西安欧亚学院】</span>
+            <p class="price" style="font-size: 14px"> 有点重</p>
+        </div>
+        <div class="o-con-much"><h4></h4></div>
+
+    </a>
+    <div class="c-com-money">
+        <span class="fr"><i>赚</i><i class="price">2.0</i><i>元</i></span>
+    </div>
+</div>
+<div class="c-com-btn">
+    <a href="">删除订单</a>
+</div>
+<div class="clear"></div>
+
+<div class="c-comment">
+    <span class="c-comment-num">订单编号：150916517682</span>
+    <span class="c-comment-suc">已完成</span>
+</div>
+<div class="c-comment-list" style="border: 0;">
+    <a class="o-con" href="content.html">
+        <div class="o-con-img"><img src="images/boy.png"></div>
+        <div class="o-con-txt">
+            <p>取快递</p>
+            <p style="color: gray;margin-top: 2px;font-size: 12px">2018-10-10 18:00:00</p>
+            <span style="color: gray;margin-top: 2px;font-size: 12px">来自【西安欧亚学院】</span>
+            <p class="price" style="font-size: 14px"> 有点重</p>
+        </div>
+        <div class="o-con-much"><h4></h4></div>
+
+    </a>
+    <div class="c-com-money">
+        <span class="fr"><i>赚</i><i class="price">2.0</i><i>元</i></span>
+    </div>
+</div>
+<div class="c-com-btn">
+    <a href="run_pool.html">再接一单</a-->>
+</div>
+<div class="clear"></div>
+</body>
+<script>
+    //获取url中的参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r != null) return unescape(r[2]); return null; //返回参数值
+    }
+    function f1(){
+        var a =Number.parseInt(getUrlParam("id"));
+        for (let i = 0; i <4 ; i++) {
+            var p= document.getElementById("bt"+i);
+            if(a==i){
+                p.className="current";
+
+            }else{
+                p.className="";
+            }
+        }
+    }
+
+
+    f1();
+</script>
+</html>

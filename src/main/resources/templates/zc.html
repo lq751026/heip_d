@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="m.ehaier.com">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"  />
+    <meta name="format-detection" content="telephone=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <meta content="false" id="twcClient" name="twcClient" />
+    <link type="text/css" rel="stylesheet" href="css/v2/style.css">
+    <link rel="apple-touch-icon-precomposed" href="../../images/ehaier-icon.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../../images/ehaier-icon.png"/>
+    <title>校园跑腿</title>
+    <link type="text/css" rel="stylesheet" href="css/v2/member.css">
+</head>
+<body id="page">
+<header class="header">
+    <span class="fh left"><a href="javascript:history.back(1)">&nbsp;</a></span>  	注册
+    <span class="hd_right right">
+<!--	<a class="gwc" href="../cart/myCart.html"><span id="count">0 </span>&nbsp;</a>
+	<a class="right_but" href="../common/navigate.html">&nbsp;</a>-->
+</span>
+</header>
+<span id="login_errorMsg" style="padding:10px;"></span>
+<div class="Login">
+    <div class="Login_top">
+        <ul>
+            <li><A href="/tomber">登录</A></li>
+            <li class="cur"><A href="toMemberRegist.html">注册</A></li>
+        </ul>
+    </div>
+    <div>
+        <div class="Login_bottom" >
+            <form  action="/zc"  method="post">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                    <tr>
+                        <td height="60" align="left" valign="middle"><input type="text" value="" id="mobileRegNum" name="email" placeholder="QQ邮箱" class="login_wbk">
+                            <span id="mobileNumMsg"></span></td>
+                    </tr>
+                    <tr>
+                        <td height="60" align="left" valign="middle"><input type="text" id="passwordReg" name="name" placeholder="设置你的昵称"  class="login_wbk"></td>
+                    </tr>
+                    <tr>
+                        <td height="60" align="left" valign="middle"><input type="text"  name="phone" placeholder="请输入你的手机号"  class="login_wbk"></td>
+                    </tr>
+                    <tr>
+                        <td height="60" align="left" valign="middle"><input type="password" id="passwordRegs" name="" placeholder="设置你的密码"  class="login_wbk"></td>
+                    </tr>
+                    <tr>
+                        <td height="60" align="left" valign="middle"><input type="password" id="repassword" name="user_password" placeholder="确认密码"  class="login_wbk"></td>
+                    </tr>
+                    <!--    <tr>
+                          <td height="60" align="center" valign="middle"><Span>注册即同意<a href="agreement.html"><span style=" font-size:14px; text-decoration:underline;">海尔商城用户服务协议</span></a></Span></td>
+                        </tr>-->
+                    <tr>
+                        <td height="60" align="center" valign="middle">
+                            <input type="submit" href="#" id="btp" class="dl_login" value="注册"></input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="30" >&nbsp;</td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--<footer class="footer">
+	&lt;!&ndash;<div id="footer" class="ft_top">
+				<a href="toMemberLogin.html">登录</a>|<a href="toMemberRegist.html">注册</a>
+			</div>&ndash;&gt;
+ &lt;!&ndash; 	<p><a href="javascript:scroll(0,0)">返回顶部</a>|<a href="../../default.htm">返回首页</a>|<a href="../common/suggestInfos.html">意见反馈</a> </p>
+  	<p>Copyright©2016</p>&ndash;&gt;
+</footer>-->
+
+</body>
+<script>
+    function chenckEmail(){
+        //获取邮箱
+        var email=$("#mobileRegNum").val();
+        //定义正则
+        var reg_emal=/^\w+@\w+\.\w+$/;
+
+        //判断
+        var fig=reg_emal.test(email);
+        if(fig){
+            $("#mobileRegNum").css("border","")
+        }else{
+            $("#mobileRegNum").css("border","1px solid red")
+        }
+        return fig;
+    }
+    $("#mobileRegNum").blur(chenckEmail);
+
+    //效验密码
+    function chencknword() {
+        //回去用户名得值
+        var name= $("#passwordRegs").val();
+        //编写一个8到20得字符   正则
+        var res_name=/^\w{8,20}$/;
+        //判断
+        var fig=res_name.test(name);
+
+        if(fig){
+            //用户名合法
+            $("#passwordRegs").css("border","");
+
+        }else{
+            //用户名非法   就给ta加一个红色的边框
+            $("#passwordRegs").css("border","1px solid red");
+        }
+          var pw=$("#repassword").val();
+        if(pw!=null&&pw!=""){
+             fig1=name==pw?true:false;
+        }else{
+             fig1=false;
+        }
+        if(fig1){
+            //用户名合法
+            $("#repassword").css("border","");
+
+        }else{
+            //用户名非法   就给ta加一个红色的边框
+            $("#repassword").css("border","1px solid red");
+        }
+        return fig==fig1&&fig!=false?true:false;
+    }
+    $("#passwordRegs").blur(chencknword);
+
+   function username(){
+       var username=$("#passwordReg").val();
+       var fig1=username!=null&&username!=""?true:false;
+
+       if(fig1){
+           //用户名合法
+           $("#passwordReg").css("border","");
+
+       }else{
+           //用户名非法   就给ta加一个红色的边框
+           $("#passwordReg").css("border","1px solid red");
+       }
+       return fig1;
+   }
+     $("#passwordReg").blur(username);
+
+
+</script>
+</html>

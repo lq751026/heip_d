@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>pay</title>
+</head>
+<body>
+     <div style="margin-top: 20%;margin-left: 50%">
+         <span>付款截图：</span>
+         <img  th:src="${pay.pay_img}"  style="width: 50%;">
+         <a href="/pay_qr">确认已付款</a>
+     </div>
+</body>
+</html>

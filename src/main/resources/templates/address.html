@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>校园跑腿</title>
+    <meta name="description" content="校园跑腿"/>
+    <meta name="keywords" content="校园跑腿"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/amazeui.min.js"></script>
+    <script type="text/javascript" src="js/application.js"></script>
+
+</head>
+<body>
+<header data-am-widget="header" class="am-header am-header-default header">
+    <div class="am-header-left am-header-nav">
+        <a href="javascript:history.go(-1)" class="">
+            <i class="am-header-icon am-icon-angle-left"></i>
+        </a>
+    </div>
+    <h1 class="am-header-title"><a href="#title-link" class="" style="color: #333;">收货地址</a></h1>
+    <div class="am-header-right am-header-nav">
+    </div>
+</header>
+<a href="javascript:history.go(-1)">
+    <ul class="address-list">
+        <li class="curr" >
+         <p th:text="${'收货人：'+address.name}"></p><p th:text="${'手机号:'+address.phone}"></p>
+           <p class="order-add1" th:text="' 收货地址：'+${address.address}">收货地址：河北省廊坊市 青云谱区解放西路258号河北省廊坊市 青云谱区解放西路258号</p>
+            <hr>
+            <div class="address-cz">
+                <label class="am-radio am-warning"></label>
+                <a th:href="${'/add_address?id='+address.id}"><img src="images/bj.png" style="width: 18px;">&nbsp;编辑</a>
+            </div>
+        </li>
+    </ul>
+</a>
+</body>
+</html>

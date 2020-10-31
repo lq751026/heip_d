@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>校园跑腿</title>
+    <meta name="description" content="校园跑腿" />
+    <meta name="keywords" content="校园跑腿"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="css/amazeui.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="js/jquery.min.js" ></script>
+    <script type="text/javascript" src="js/amazeui.min.js" ></script>
+    <script type="text/javascript" src="js/application.js" ></script>
+
+</head>
+<body>
+<div class="member">
+    <a href="/personal">
+        <div class="member-pic">
+            <img src="images/p.png" th:src="${user.tou_img}" />
+        </div>
+    </a>
+
+    <div class="member-infor">用户名：<span th:text="${user.name}"></span></div>
+</div>
+<ul class="member-nav">
+    <a href="/address"><li><i class="am-icon-map-marker"></i><span>收货地址</span></li></a>
+    <a href="/orders?id=0"><li><i class="am-icon-cart-arrow-down"></i><span>我的发布</span></li></a>
+    <a href="/my_order?id=0"><li><i class="am-icon-newspaper-o"></i><span>我的抢单</span></li></a>
+    <a href="/account"><li><i class="am-icon-credit-card"></i><span>账户管理</span></li></a>
+</ul>
+<ul class="member-nav mt">
+    <a href="/out"><li><i class="am-icon-phone"></i>退出登录</li></a>
+
+</ul>
+<div class="h50"></div>
+<div th:replace="comonm/tail::body"></div>
+
+</body>
+</html>
